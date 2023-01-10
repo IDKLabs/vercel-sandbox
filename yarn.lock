@@ -129,7 +129,7 @@
   dependencies:
     xss "^1.0.8"
 
-"@auth0/nextjs-auth0@^1.5.0":
+"@auth0/nextjs-auth0@1.9.2":
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/@auth0/nextjs-auth0/-/nextjs-auth0-1.9.2.tgz#e308f136fd270b16a73007815b79e755734fe639"
   integrity sha512-QsO6jtDBms0mAb2B1GSqQVEeoj5EIIvUtbWs02O8Tp6FtMXDIvfuJv/EFbPkP/d86e9T/399uiiaUbpgo1g0jg==
