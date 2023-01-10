@@ -1,8 +1,9 @@
-import React from 'react';
-import prisma from '../../lib/prisma';
-import { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
-import toast, { Toaster } from 'react-hot-toast';
+import React from "react";
+import prisma from "../../lib/prisma";
+import { useState } from "react";
+import { gql, useMutation } from "@apollo/client";
+import toast, { Toaster } from "react-hot-toast";
+import Head from "next/head";
 
 const BookmarkLinkMutation = gql`
   mutation ($id: String!) {
@@ -23,8 +24,8 @@ const Link = ({ link }) => {
   const bookmark = async () => {
     setIsLoading(true);
     toast.promise(createBookmark({ variables: { id: link.id } }), {
-      loading: 'working on it',
-      success: 'Saved successfully! 🎉',
+      loading: "working on it",
+      success: "Saved successfully! 🎉",
       error: `Something went wrong 😥 Please try again`,
     });
     setIsLoading(false);
@@ -32,6 +33,27 @@ const Link = ({ link }) => {
 
   return (
     <div>
+      <Head>
+        <meta charSet="utf-8" />
+        <title>{link.title}</title>
+        <meta key="description" name="description" content={link.description} />
+        <meta key="ogTitle" property="og:title" content={link.title} />
+        <meta
+          key="ogDescription"
+          property="og:description"
+          content={link.description}
+        />
+        {link.imageUrl && (
+          <meta key="ogImage" property="og:image" content={link.imageUrl} />
+        )}
+        {link.imageUrl && (
+          <meta
+            key="twitterCard"
+            name="twitter:card"
+            content="summary_large_image"
+          />
+        )}
+      </Head>
       <div className="prose container mx-auto px-8">
         <Toaster />
         <button
